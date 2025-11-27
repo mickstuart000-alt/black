@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MIU Tourism Students | Exploring Uganda</title>
+    <style>
+        /* Color Scheme - Tourism Inspired */
+        :root {
+            --primary-green: #2E8B57;      /* Nature/forest green */
+            --secondary-blue: #1E90FF;     /* Water/sky blue */
+            --accent-yellow: #FFD700;      /* Sunshine yellow */
+            --earth-brown: #8B4513;        /* Earth brown */
+            --neutral-white: #FFFFFF;
+            --neutral-light: #F5F5F5;
+            --neutral-dark: #333333;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--neutral-light);
+            color: var(--neutral-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-blue) 100%);
+            color: var(--neutral-white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--neutral-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1562552476-8ac59b2a2e46?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--neutral-white);
+            text-align: center;
+            padding: 6rem 0;
+            margin-bottom: 3rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-yellow);
+            color: var(--neutral-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-green);
+            color: var(--neutral-white);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-green);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-yellow);
+            margin: 10px auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text {
+            padding-right: 1rem;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: var(--neutral-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            height: 200px;
+            background-color: var(--secondary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-size: 4rem;
+        }
+
+        .member-image img {
+            max-height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--earth-brown);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Destinations Section */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            background-color: var(--neutral-white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .destination-image {
+            height: 200px;
+            background-color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-white);
+            font-size: 4rem;
+        }
+
+        .destination-image img {
+            max-height: 100%;
+            width: auto;
+            display: block;
+        }
+
+        .destination-info {
+            padding: 1.5rem;
+        }
+
+        .destination-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--neutral-dark);
+            color: var(--neutral-white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--neutral-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: var(--neutral-white);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-yellow);
+            color: var(--neutral-dark);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🌍</span>
+                    <h1>MIU Tourism Students</h1>
+                </div>
+                <div class="mobile-menu">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#culture">Culture & Heritage</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Exploring Uganda, Showcasing the World</h2>
+            <p>Through the Eyes of MIU Tourism Students</p>
+            <a href="#destinations" class="btn">Discover Uganda</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>The Metropolitan International University Tourism Students' Website is designed to showcase Uganda's tourism potential through student projects and research. We provide educational content about cultural, natural, and historical attractions.</p>
+                    <p>Our platform serves as a digital portfolio representing the Tourism Department and its academic excellence, while promoting sustainable and responsible tourism among students and the wider community.</p>
+                    <p>Our motto: <strong>"Exploring Uganda, Showcasing the World — Through the Eyes of MIU Tourism Students."</strong></p>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder for an image -->
+                    <div style="height: 300px; background-color: var(--secondary-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                       <img src="Group img.jpg" alt="Group image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" style="background-color: var(--neutral-white);">
+        <div class="container">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image"><img src="KATRIX.jpg" alt="KATRIX"></div>
+                    <div class="member-info">
+                        <h3>Mwiine Justus</h3>
+                        <p class="member-role">Head of Group</p>
+                        <p>Oversees website direction, approves content, ensures academic quality.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="IMG_3.jpg" alt="IMG_3"></div>
+                    <div class="member-info">
+                        <h3>Nakuya Rhinah</h3>
+                        <p class="member-role">Content Editor</p>
+                        <p>Reviews articles for clarity and tone.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="Sasha.png" alt="Sasha"></div>
+                    <div class="member-info">
+                        <h3>Nakabugo Hadijjah</h3>
+                        <p class="member-role">Cultural Research Coordinator</p>
+                        <p>Writes heritage and culture pieces.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="Elijah.jpg" alt="Elijah"></div>
+                    <div class="member-info">
+                        <h3>Musisi Kiberu Elijah</h3>
+                        <p class="member-role">Technical & Photography Lead</p>
+                        <p>Manages visuals and multimedia.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="Stuart.jpg" alt="Stuart"></div>
+                    <div class="member-info">
+                        <h3>Kiberu Stuart</h3>
+                        <p class="member-role">Destination Content Writer</p>
+                        <p>Develops pages about tourism sites.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="Lordwin.jpg" alt="Lordwin"></div>
+                    <div class="member-info">
+                        <h3>Matsiko Lordwin</h3>
+                        <p class="member-role">Web Designer</p>
+                        <p>Ensures site layout and navigation function well.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image"><img src="Kenneth].jpg" alt="Kenneth"></div>
+                    <div class="member-info">
+                        <h3>Dembula Kenneth</h3>
+                        <p class="member-role">Communications Manager</p>
+                        <p>Handles contact forms, partnerships, and outreach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations">
+        <div class="container">
+            <h2 class="section-title">Uganda's Top Destinations</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="destination-image"><img src="Bwindi.jpg" alt="Bwindi"></div>
+                    <div class="destination-info">
+                        <h3>Bwindi Impenetrable Forest</h3>
+                        <p>Home to nearly half of the world's mountain gorillas, this UNESCO World Heritage Site offers one of the most thrilling wildlife experiences on Earth.</p>
+                        <a href="#" class="btn" style="margin-top: 1rem;">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image"><img src="IMG_2.jpg" alt="Murchison"></div>
+                    <div class="destination-info">
+                        <h3>Murchison Falls</h3>
+                        <p>Where the Nile River forces its way through a narrow gorge and plunges 43 meters, creating one of Africa's most powerful waterfalls.</p>
+                        <a href="#" class="btn" style="margin-top: 1rem;">Learn More</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-image"><img src="ELIZ.jpg" alt="Queen Elizabeth"></div>
+                    <div class="destination-info">
+                        <h3>Queen Elizabeth National Park</h3>
+                        <p>Uganda's most popular savanna reserve with diverse ecosystems including sprawling savanna, shady forests, and sparkling lakes.</p>
+                        <a href="#" class="btn" style="margin-top: 1rem;">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Metropolitan International University</p>
+                    <p>Tourism Students' Group</p>
+                    <p>Email: tourism-group@miu.ac.ug</p>
+                    <p>Phone: +256  700 236 117</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#projects">Student Projects</a></li>
+                        <li><a href="#culture">Culture & Heritage</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Stay connected with our latest updates and projects</p>
+                    <div class="social-links">
+                        <a href="#"><img src="facebook.jpg" alt="Facebook" style="width:40px; height:40px; border-radius:50%;" /></a>
+                        <a href="#"><img src="twitter.webp" alt="Twitter" style="width:40px; height:40px; border-radius:50%;" /></a>
+                        <a href="#"><img src="instagram.jpg" alt="Instagram" style="width:40px; height:40px; border-radius:50%;" /></a>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Metropolitan International University - Tourism Students' Group. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links (safe: checks target exists)
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu after clicking a link
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
